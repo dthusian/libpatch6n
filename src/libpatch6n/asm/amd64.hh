@@ -1,0 +1,7 @@
+
+#ifndef PATCH6N_AMD64_HH
+#define PATCH6N_AMD64_HH
+
+
+
+#endif //PATCH6N_AMD64_HH
