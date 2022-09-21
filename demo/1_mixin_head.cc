@@ -3,18 +3,22 @@
 
 void patch_me(int foo) {
   PATCHABLE;
-  std::cout << "The number is: " << foo << "\n";
+  std::cout << "target: The number is: " << foo << "\n";
 }
 
 void inject_me(int* foo) {
+  std::cout << "mixin: recieved number: " << *foo << "\n";
   (*foo) *= 2;
+  std::cout << "mixin: The number is now: " << *foo << "\n";
 }
 
 int main() {
-  std::cout << "libpatch6n tech test\n";
+  std::cout << "Demo 1: Mixin Head\n";
   auto* state = patch::patch_function(patch::function_def {
       .target = (void*) patch_me,
-      .n_args = 1,
+      .args = {
+          patch::arg_type::integer
+      },
       .mixins = {
           patch::mixin_def {
               .typ = patch::mixin_type::inject_head,

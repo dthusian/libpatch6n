@@ -20,9 +20,14 @@ namespace patch {
     void* injected;
   };
 
+  enum class arg_type {
+    integer,
+    vector
+  };
+
   struct function_def {
     void* target;
-    int n_args;
+    std::vector<arg_type> args;
     std::vector<mixin_def> mixins;
   };
 
